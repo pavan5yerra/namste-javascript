@@ -1,0 +1,34 @@
+
+#body{
+    background-color: rgb(97, 96, 94);
+}
+#container {
+    position: fixed;
+    top:40%;
+    left:40%;
+    background-color: #eeab1c;
+    text-align: center;
+    width: auto;
+    margin:auto;
+    padding: 20px; 
+}
+#head-title{
+    margin:auto;
+    text-align: center;
+    background-color: #eeab1c;
+    font-weight: bolder;
+    color: rgb(97, 96, 94);
+}
+#text{
+    font-weight: bolder;
+    color: rgb(97, 96, 94);
+}
+#color-name{
+    font-weight: bolder;
+    color: rgb(97, 96, 94);
+}
+button{
+    background-color: rgb(97, 96, 94);
+    font-weight: bolder;
+    color: #eeab1c;
+}

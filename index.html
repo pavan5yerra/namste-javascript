@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>Pavan Code</title>
-	<meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Flipper</title>
+    <link rel="stylesheet" href="index.css">
 </head>
+<body id="body">
+    <script type="text/javascript" src="./index.js"  defer > </script>
+    <h1 id="head-title"> Color Flipper</h1>
+    <div id="container"> 
+        <div>
+            <h2 id="color-name">Color Name : </h2>
+            <h2 id="color-name"> </h2>
+        </div>
+        <input type=text id="throttleinput" placeholder="throttle" data-uppercase onkeyup=" OptimizeInput('throttle')"/>
+        <input type=text id="debounceinput" placeholder="debounce" data-uppercase onkeyup=" debouceInput(event,'debounce')"/>
+        <button id="button" type="button">Click to Change Color</button>
+    </div>
 
-<body>
-	<div id="app"></div>
-	<script src="./index.js" ></script>
+  
 </body>
-
 </html>
