@@ -1,0 +1,41 @@
+body{
+    background-color:rgb(97, 96, 94);
+}
+
+#header {
+    background-color:rgb(226, 165, 42);
+    color:rgb(97, 96, 94); 
+    text-align: center;
+    width: 60%;
+    padding: 10px;
+    margin: auto;
+    border-radius: 5px;
+
+}
+
+#counter{
+    margin: auto;
+    text-align: center;
+    color:rgb(97, 96, 94); 
+    width: 60%;
+    padding: 10px;
+    background-color:rgb(226, 165, 42);
+    border-radius: 5px;
+}
+
+#button-card{
+    margin: auto;
+    padding:10%;
+}
+
+.button{
+    background-color:rgb(97, 96, 94);
+    color:rgb(226, 165, 42);
+    border-radius: 5px;
+    padding: 10px;
+    width: auto;
+    font-size: medium;
+    font-weight: bolder;
+
+
+}

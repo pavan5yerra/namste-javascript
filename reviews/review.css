@@ -1,0 +1,27 @@
+#container {
+    text-align:center;
+    width:300%;
+    margin:auto;
+    
+ 
+}
+#title{
+    color:rgb(226, 165, 42);
+    font-weight: bolder;
+    font-size: larger;
+}
+
+
+#cards{
+    margin:auto;
+    width: 100%;
+    background-color:rgb(97, 96, 94) ;
+    
+
+}
+
+body{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
