@@ -1,27 +1,39 @@
 #container {
     text-align:center;
-    width:300%;
-    margin:auto;
-    
- 
+    width:50%; 
 }
+
 #title{
     color:rgb(226, 165, 42);
     font-weight: bolder;
     font-size: larger;
+    width: 60%;
 }
 
-
 #cards{
-    margin:auto;
-    width: 100%;
+    width: 60%;
     background-color:rgb(97, 96, 94) ;
-    
+    color:rgb(226, 165, 42);
+    text-overflow: clip;
+    border-radius:10px;
+}
 
+img{
+    margin:auto;
+    width: 20%;
+    height:20%;
+    border-radius:70%;
 }
 
 body{
-    position: absolute;
-    top: 30%;
-    left: 30%;
+    width:100%;
+    padding:30%;
+}
+
+button{
+    color:rgb(226, 165, 42);
+    font-weight: bolder;
+    border-radius:20%;
+    padding:5px;
+    width:auto
 }

@@ -1,0 +1,56 @@
+
+#container{
+  width: 30%;
+  height: 50%;
+  background-color:rgb(255, 255, 255) ;
+  /* Center vertically and horizontally */
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  margin: 5px 0 0 5px;
+  border-radius: 9px;
+  text-align: center;
+}
+#title{
+    color:rgb(226, 165, 42);
+    font-weight: bolder;
+}
+
+.textarea{
+    background-color:rgb(226, 165, 42);
+    color:rgb(97, 96, 94) ;
+    font-weight: bolder;
+    border-radius: 5px;
+}
+
+.button{
+    background-color:rgb(97, 96, 94) ;
+    color:rgb(226, 165, 42);
+    font-weight: bolder;
+    border-radius: 9px;
+}
+.commpara{
+    background-color:rgb(97, 96, 94) ;
+    color:rgb(226, 165, 42);
+    font-weight: bolder;
+    border-radius: 5px;
+}
+.subcomm{
+
+    margin:5px;
+ 
+    background-color:rgb(226, 165, 42);
+    color:rgb(97, 96, 94) ;
+    font-weight: bolder;
+    border-radius: 5px;
+}
+
+#replycontainer{
+
+    margin:5px;
+
+    background-color:rgb(97, 96, 94);
+    color:rgb(226, 165, 42);
+    font-weight: bolder;
+    border-radius: 5px;
+}

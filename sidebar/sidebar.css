@@ -1,0 +1,25 @@
+
+.flex-container {
+    display: flex;
+    background-color: rgb(226, 165, 42);
+  }
+  
+  .flex-container > div {
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+    color:rgb(97, 96, 94) ;
+  }
+
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+      background-color: rgb(97, 96, 94) ;
+    }
+    .flex-container > div {
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+        color: rgb(226, 165, 42);
+      }
+  }
