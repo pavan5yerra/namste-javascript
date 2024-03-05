@@ -1,0 +1,8 @@
+#iframeDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+iframe {
+    height: 300px;
+}
