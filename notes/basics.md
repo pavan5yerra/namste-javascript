@@ -102,7 +102,7 @@
 
 ***Usage of clousures in SetTimeout***
 
->- ***In the Below Example when js engine comes to setTimeout , it takes the call back function at attach call back function it***
+>- ***In the Below Example when js engine comes to setTimeout , it takes the call back function and attach to  call back register***
 >- ***Once time is expires then it bring back the call back funciton to the call stack***
 
         function x(){
@@ -122,6 +122,7 @@
 >- ***As we using intializing the variable with var i reference is same for all the closures***
 >- ***Once the time got Expired the value of i is already 3 , so it print 3 three times***
 >- ***One way to fix this issue is using of let instead of var***
+
           function x(){
             for(var i=1 ; i<=3 ; i++){
                 setTimeout( () => {
