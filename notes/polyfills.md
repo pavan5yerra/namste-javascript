@@ -4,54 +4,53 @@
 
 ## Usage of call , apply & bind
 
-        const student = {
-            name : "pavan",
-            printName : function (){
-                console.log(this.name); 
+         const student = {
+                name : "pavan",
+                printName : function (wish,age){
+                    console.log(wish + this.name  + age); 
+                }
             }
-        }
+        
+            const student2 = {
+                name : "Jumbo"
+            }
 
-        const student2 = {
-            name : "Jumbo"
-        }
 
-        <!-- See few execution below -->
-
-        student.printName()  ---> Pavan
-        student.printName.call(student2) ---> Jumbo
-        student.printName.apply([student2])   ---> Jumbo
-        const getData = student.printName.bind(student2);
-        getData()  ---> Jumbo 
+        student.printName("helooo " , 15);
+        student.printName.call(student2, "Hello call ",20);
+        student.printName.apply(student2,["hello apply ",25]);
+        const wishme = student.printName.bind(student2,"Hello bind",30);
+        wishme();
 
 
 ## Polyfill of call 
 
-    Function.prototype.myCall = function (obj , ...args) {
-        obj.ref = this
-        return obj.ref(...args);
-    }   
-
-    printName.myCall(myName, "Palia", "India");
+    Function.prototype.myCall = function (obj,...args) {
+              obj.ref=this;
+              obj.ref(...args);
+        }
+        student.printName.myCall(student2, "Hello mycall" , 15);
 
 ## Polyfill of apply
 
-     Function.prototype.myApply = function (obj , args) {
-        obj.ref = this
-        return obj.ref(...args);
-    }   
-
-    printName.myApply(myName, ["Palia", "India"]);
+   Function.prototype.myApply = function (obj, args){
+              obj.ref = this;
+              obj.ref(...args);
+        }
+        
+        student.printName.myApply(student2, ["Hello myapply" , 25]);
 
 ## Ployfill of bind
 
-     Function.prototype.myApply = function (obj , ...args1) {
-        obj.ref = this
-        return  function (...args2) {
-             obj.ref(...arg1,...args2);
+    Function.prototype.myBind = function (obj,...args1){
+            obj.ref=this;
+            return function (...args2) {
+               obj.ref(...args1 , ...args2)
+            }
         }
-    }   
-
-    printName.bind(data , "stupid","jaffa")("vedava");
+        
+        const binder = student.printName.myBind(student2, "Hello myBind");
+        binder("35");
 
 
 
