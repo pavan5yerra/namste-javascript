@@ -121,34 +121,29 @@
 
 >- ***It is mainly used for performance optimization when user interacting with the applications***
 
->- ***Amazon has serach bar to find its products , if you observe the it wont give suggestion on keypress***
+>- ***Amazon has search bar to find its products if you observe the it wont give suggestion on keypress***
 >- ***It will only fire event whenever you stop for sometime***
->- ***let say if type computer in search bar , it wont fire event for 8 times , it may be fire for 2 event based on ur typing speed***
+>- ***let say if type computer in search bar , it wont fire event for 8 times , it maybe fire for 2 event based on ur typing speed***
 >- ***Due to this it control the api hits  and will decrease the load on API***
 
 
-                    // So when ever you type input the event will fire only after 300 miilli second 
+                    // So whenever you type input the event will fire only after 300 milli second 
                     let counter = 0;
                     const getData = () => {
                     // calls an API and gets Data
                     console.log("Fetching Data ..", counter++);
                     }
 
-                    const debounce = function (fn, d) {
-                    let timer;
-                    return function () {
-                        let context = this,
-                        args = arguments;
-                        clearTimeout(timer);
-                        timer = setTimeout(() => {
-                        getData.apply(context, arguments);
-                        }, d);
-                    }
-                    }
+                    function debounce(func, delay) {
+                          let timer;
+                          return () => {
+                            clearTimeout(timer);
+                            timer = setTimeout(func, delay);
+                          };
+                        }
+                  }
 
                     const betterFunction = debounce(getData, 300);
-
-
 
                 <input type="text" onkeyup= betterFunction() />
 
@@ -165,22 +160,18 @@
                 console.count("Throttled Function");
                 }
 
-                const throttle = (fn, limit) => {
-                let flag = true;
-                return function(){
-                    let context = this;
-                    let args = arguments;
-                    if(flag){
-                        fn.apply(context, args);
-                        flag = false;
-                        setTimeout(() => {
-                            flag=true;
-                        }, limit);
+              function throttling(func, delay) {
+                  let flag = true;
+                  return () => {
+                    if (flag) {
+                      func();
+                      setTimeout(() => (flag = true), delay);
+                      flag = false;
                     }
-                }
+                  };
                 }
 
-                const betterLoggerFunction = throttle(loggerFunc, 1000);
+                const betterLoggerFunction = throttling(loggerFunc, 1000);
 
                 window.addEventListener("resize",betterLoggerFunction);
 
