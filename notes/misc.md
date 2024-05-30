@@ -1,3 +1,5 @@
+# Differnce between ES5 & ES6
+  ***PLEASE read the link : https://medium.com/sliit-foss/es5-vs-es6-in-javascript-cb10f5fd600c***
 # Hoc
 
 >-  ***A Function which takes another function as an argument and return a function is Higher Order Function***
