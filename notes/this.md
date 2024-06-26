@@ -69,5 +69,26 @@
             }
         }
 
-        obj.x();
+        obj2.x();
+
+
+        
+        const obj2 = {
+            a:10,
+            x : function () {
+                    console.log(this) //  the value of this object , because this is called using obj2.x
+                        function y ()  {
+                                // the value of  below this is undefined in strict mode and window in non strict mode , 
+                                //becuase y func is called directly , so it won't attach any object to it.
+                            console.log(this); 
+                        }
+                    y();
+                    this.y = y;
+                    this.y();
+            }
+        }
+
+        obj2.x();
+
+
 
