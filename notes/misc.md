@@ -1,5 +1,67 @@
 # Differnce between ES5 & ES6
   ***PLEASE read the link : https://medium.com/sliit-foss/es5-vs-es6-in-javascript-cb10f5fd600c***
+
+
+***Destructing Nested Objects***
+```javascript
+ const user = {
+   name: 'John Doe',
+   address: {
+     street: '123 Main St',
+     city: 'Anytown',
+     country: 'USA'
+   }
+ };
+ 
+ const { address: { street, city, country } } = user;
+ console.log(street); // '123 Main St'
+ console.log(city); // 'Anytown'
+ console.log(country); // 'USA'
+```
+
+
+***map vs forEach***
+
+***ForEach***
+  - Purpose: The forEach method is used to execute a provided function once for each array element.
+  - Return Value: forEach does not return anything; it returns undefined.
+  - Mutation: It is typically used for side effects such as modifying the array or working with each element individually.
+    
+```javascript
+ const numbers = [1, 2, 3, 4];
+ numbers.forEach((num, index, arr) => {
+     arr[index] = num * 2;
+ });
+ console.log(numbers);
+ // Output: [2, 4, 6, 8]
+
+
+const urls = ['url1', 'url2', 'url3'];
+urls.forEach(url => {
+    fetch(url)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+});
+
+
+```
+
+***map***
+
+  - Purpose: The map method is used to create a new array with the results of calling a provided function on every element in the array.
+  - Return Value: map returns a new array containing the results of applying the provided function to each element.
+  - Mutation: It does not mutate the original array; it produces a new array.
+
+```javascript
+ const numbers = [1, 2, 3];
+ const doubled = numbers.map(num => num * 2);
+ console.log(doubled);
+ // Output: [2, 4, 6]
+```
+
+
+
 # Hoc
 
 >-  ***A Function which takes another function as an argument and return a function is Higher Order Function***
