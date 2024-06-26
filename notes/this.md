@@ -48,6 +48,7 @@
 ## This inside Arrow Functions
 >- ***Arrow function wont have own this . so it will point out to its scope where it is underlying (enclosing lexical context)**
 
+```javascript
         const obj = {
             a:10,
             x:() => {
@@ -89,6 +90,6 @@
         }
 
         obj2.x();
-
+```
 
 
