@@ -12,6 +12,7 @@
 
 ***Example***
 
+```javascript
         function creatOrder (    function payment() {
             console.log("Paying for the ordered items)
         }
@@ -19,7 +20,7 @@
             console.log("creating an order)
             payment();  // we gave control of payment method to createOrder - this is dangerous
         }
-
+```
     
 ## promises
 
@@ -37,7 +38,7 @@
 
 
 ***creating of promise and using it***
-
+```javascript
         const cart = ["shoes","pants"];
         
         <!-- creating a promise -->
@@ -81,7 +82,7 @@
         .then((paymentInfo) => console.log(""paymentInfo"));
         .catch((error) => console.log(error.message));
 
-
+```
 
 ## Async & Await
 
@@ -93,7 +94,8 @@
 
 ***Example***
     <!-- Even if you return string , it returns promise wraps aroud it. -->
-    const aysnFunction = async () => {return "hello"} 
+```javascript
+    const aysnFunction = async () => {return "hello"}
 
     <!-- using of await  -->
 
@@ -106,7 +108,7 @@
         console.log(data);
     }
     handlePromise();
-
+```
 
 ## Difference between handling Promises using traditional & aysnc,await
 
@@ -116,7 +118,7 @@
 
 
 ***Two Promises were created  with setTimeOut for having delay Effect***
-
+```javascript
              const p1 = new Promise((resolve,reject) => {
                 //resolving promise after 10 seconds
                 setTimeout(() => {
@@ -130,7 +132,7 @@
                     resolve("promise is resolved");
                 },10000);
             })
-
+```
 
 ***JS Engines work when using async& await  handling multple promises***
 >    - ***When we have multiple Promise the both the will start resolving parelley before JS engine***
@@ -165,7 +167,7 @@
 >- ***check if promise is resolved or not . Its already resolved as p2 is having timeout of 5 seconds***
 >- ***It will print namstey Javascript2 immedieatly***
 
-
+```javascript
                   const handleMultiplePromise = async () => {
                     console.log("Hello") // Its will print this line 
                     const data1 = await p1; 
@@ -177,7 +179,7 @@
                 }
         
               handleMultiplePromise();
-
+```
 
 
 
@@ -187,6 +189,7 @@
 >- ***Once the callstack resolved respective call back method will comes to the call stack***
 >- ***This process is similar to Eventloop video of namstey javascript***
 
+```javascript
         function getData(){
             p1.then((res) => console.log(res));
             console.log("namstey Javascript1");
@@ -194,7 +197,7 @@
             p2.then((res) => console.log(res));
             console.log("namstey Javascript"2);
         }
-
+```
 
 
 
@@ -202,7 +205,7 @@
 
 
 ## Fetch method  and Error Handling using Async
-
+```javascript
     const getData = async () => {
         try{
         const resp = await fetch("API_URL");
@@ -214,5 +217,5 @@
             console.log("Error",err);
         }
     }
-
+```
     getData();
