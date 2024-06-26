@@ -66,7 +66,7 @@ urls.forEach(url => {
 
 >-  ***A Function which takes another function as an argument and return a function is Higher Order Function***
 
-
+```javascript
         const radius =[3,1,2,4];
 
         const area = (radius) => Math.PI * radius * radius;
@@ -87,7 +87,7 @@ urls.forEach(url => {
         console.log(calculateLogic(radius,area));
         console.log(calculateLogic(radius,circumference));
         console.log(calculateLogic(radius,diameter));
-
+```
 
 
 # Event Bubbling & Capturing
@@ -103,6 +103,7 @@ urls.forEach(url => {
 >- ***Bydefault the addEvenListener function attaches every event in bubble phase and no need passing isCapture options***
 >- ***If you want to captur events in capture phase you need pass isCapture argument as true***
 
+```javascript
             <!DOCTYPE html>
                 <head>
                 <title>Akshay Saini</title>
@@ -144,7 +145,7 @@ urls.forEach(url => {
                 console.log("Child Clicked!");
             }, true);               // Is capture phase enable
 
-
+```
 
 # Event Delegation 
 >- ***It is a technique od handling event in a webpage in a better way***
@@ -155,6 +156,7 @@ urls.forEach(url => {
 >- ***So we take advantage of event propagation and use it to our cause***
 >- ***[code example](https://codepen.io/akshaymarch7/pen/omOevJ)
 
+```javascript
             <!DOCTYPE html>
                 <head>
                 <title>Akshay Saini</title>
@@ -180,7 +182,7 @@ urls.forEach(url => {
                 window.location.href = "/" + e.target.id;
             }
             });
-
+```
 # Debounce
 
 >- ***It is mainly used for performance optimization when user interacting with the applications***
@@ -190,7 +192,7 @@ urls.forEach(url => {
 >- ***let say if type computer in search bar , it wont fire event for 8 times , it maybe fire for 2 event based on ur typing speed***
 >- ***Due to this it control the api hits  and will decrease the load on API***
 
-
+```javascript
                     // So whenever you type input the event will fire only after 300 milli second 
                     let counter = 0;
                     const getData = () => {
@@ -210,7 +212,7 @@ urls.forEach(url => {
                     const betterFunction = debounce(getData, 300);
 
                 <input type="text" onkeyup= betterFunction() />
-
+```
 
 # Throttling
 >- ***Throttling means controlling the speed of firing events***
@@ -219,7 +221,7 @@ urls.forEach(url => {
 >- ***How many time you click the button it will only fire one event in that 500 millisecond window***
 
 
-
+```javascript
                 const loggerFunc = () => {
                 console.count("Throttled Function");
                 }
@@ -247,4 +249,30 @@ urls.forEach(url => {
                 }
 
                 window.addEventListener("resize",normalFunc);
+```
 
+***SetInterval vs SetTimeout***
+
+```javascript
+   let intervalID = setInterval(() => {
+       console.log('This runs every 3 seconds');
+   }, 3000);
+   
+   // To cancel the interval
+   clearInterval(intervalID);
+   
+   
+   
+   let intervalID = setInterval(() => {
+       console.log('This runs every 3 seconds');
+   }, 3000);
+   
+   // To cancel the interval
+   clearInterval(intervalID);
+```
+
+- setTimeout: Executes a function once after a specified delay(It might have some delays)
+- setInterval: Executes a function repeatedly at specified intervals.
+- setTimeout: Useful for delaying a single operation, such as displaying a message after a delay or performing an action after some time.
+- setInterval: Useful for repeatedly performing an action at regular intervals, such as updating a clock, polling a server, or performing animations.
+- Both functions can be canceled using their respective IDs with clearTimeout and clearInterval.
