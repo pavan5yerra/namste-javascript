@@ -103,7 +103,7 @@
         let acc=init;
         
         for(let i=0 ; i<this.length ; i++){
-            acc+=func(acc,this[i]);
+            acc=func(acc,this[i]);
         }
         return acc;
     }
