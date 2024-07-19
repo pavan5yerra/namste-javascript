@@ -219,3 +219,33 @@
     }
 ```
     getData();
+
+
+ ##  parallel Fetch method  and Error Handling using Async
+```javascript
+const urls = [
+  'https://api.example.com/data1',
+  'https://api.example.com/data2',
+  'https://api.example.com/data3',
+];
+
+// Function to fetch data from all URLs in parallel
+const fetchAllData = async () => {
+  try {
+    // Create an array of fetch promises
+    const fetchPromises = urls.map(url => fetch(url).then(response => response.json()));
+
+    // Wait for all fetch promises to resolve
+    const results = await Promise.all(fetchPromises);
+
+    // Log the results
+    console.log(results);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+// Call the function to fetch data
+fetchAllData();
+```
+
