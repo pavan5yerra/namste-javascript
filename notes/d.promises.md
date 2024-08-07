@@ -249,3 +249,94 @@ const fetchAllData = async () => {
 fetchAllData();
 ```
 
+
+
+```javascript
+//--> Expect the output
+console.log(1);
+
+setTimeOut(() => console.log(2));
+
+Promise.resolve(() => console.log(3)).
+then(() => console.log(4));
+
+console.log(5);
+
+//output : 
+
+1
+5
+4
+2
+
+/* ---> what happend to 3 ..?
+ Please remember promise should alway return 
+ in the above it returned anonymous function and it no getting
+ called anywhere , So 3 is not appeared in the output
+ 
+Since the promise is the then block is executed and give only 4.
+*/
+```
+
+
+**Difference between PromiseAll & PromiseSettled:**
+
+### `Promise.all`
+- **Purpose**: Used to run multiple promises concurrently and wait for all of them to resolve.
+- **Behavior**:
+    - If all promises resolve successfully, it resolves with an array of the resolved values.
+    - If any promise rejects, it immediately rejects with the reason of the first promise that rejects.
+- **Use Case**: **When you need all promises to succeed before proceeding**
+
+
+### `Promise.allSettled`
+- **Purpose**: Used to run multiple promises concurrently and wait for all of them to settle (either resolve or reject).
+- **Behavior**:
+    - It resolves with an array of objects that describe the outcome of each promise (either `{ status: 'fulfilled', value: result }`  or `{ status: 'rejected', reason: error }` ).
+    - It never rejects; it always waits for all promises to settle.
+- **Use Case**: **When you want to know the outcome of all promises regardless of whether they are resolved or rejected.**
+**Example**:
+
+```javascript
+javascriptCopy codeconst promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(reject, 100, 'error');
+});
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 200, 'foo');
+});
+
+
+Promise.all([promise1, promise2, promise3]).then(results => {
+  results.forEach((result) => {
+    if (result.status === 'fulfilled') {
+      console.log('Fulfilled:', result.value);
+    } else {
+      console.log('Rejected:', result.reason);
+    }
+  });
+});
+
+//output 
+//Error
+
+Promise.allSettled([promise1, promise2, promise3]).then(results => {
+  results.forEach((result) => {
+    if (result.status === 'fulfilled') {
+      console.log('Fulfilled:', result.value);
+    } else {
+      console.log('Rejected:', result.reason);
+    }
+  });
+});
+
+//output
+
+Fulfilled: 3
+Rejected: error
+Fulfilled: foo
+
+```
+
+
+
