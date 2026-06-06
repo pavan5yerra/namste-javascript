@@ -1248,6 +1248,102 @@ OUTPUT:
 ╚══════════════════════════════════════════════════════╝
 ```
 
+Yes — here is a full ASCII diagram of the browser event loop, including the **call stack**, **Web APIs**, **microtask queue**, **macrotask queue**, and the execution flow for promises.
+
+```text
+                         BROWSER / JS RUNTIME
+
+┌──────────────────────────────────────────────────────────────────────┐
+│                              CALL STACK                              │
+│  - runs synchronous JavaScript                                       │
+│  - top function executes first                                       │
+└──────────────────────────────────────────────────────────────────────┘
+                │
+                │ sync code runs
+                v
+
+┌──────────────────────────────────────────────────────────────────────┐
+│                              WEB APIs                                │
+│  setTimeout()                                                        │
+│  fetch()                                                             │
+│  DOM events                                                          │
+│  timers, network, browser work                                       │
+└──────────────────────────────────────────────────────────────────────┘
+                │
+                │ async work finishes
+                v
+
+┌───────────────────────────┐        ┌───────────────────────────┐
+│     MICROTASK QUEUE       │        │     MACROTASK QUEUE       │
+│  Promise.then()           │        │  setTimeout()             │
+│  Promise.catch()          │        │  setInterval()            │
+│  Promise.finally()        │        │  DOM events               │
+│  queueMicrotask()         │        │  message events           │
+└───────────────────────────┘        └───────────────────────────┘
+                │                               │
+                └──────────────┬────────────────┘
+                               │
+                               v
+
+                      ┌──────────────────────┐
+                      │      EVENT LOOP      │
+                      │                      │
+                      │ 1. run sync code     │
+                      │ 2. empty call stack  │
+                      │ 3. run all microtasks│
+                      │ 4. render if needed  │
+                      │ 5. run one macrotask │
+                      │ 6. repeat            │
+                      └──────────────────────┘
+```
+## Code example
+```javascript
+console.log("1: start");
+
+setTimeout(() => {
+  console.log("5: setTimeout callback");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("4: promise then");
+});
+
+fetch("https://example.com")
+  .then(() => console.log("6: fetch then"));
+
+console.log("2: end");
+```
+## Execution flow
+```text
+1. Main script enters call stack
+2. console.log("1: start") runs immediately
+3. setTimeout() is sent to Web APIs
+4. Promise.resolve().then(...) is placed in microtask queue
+5. fetch() is sent to Web APIs
+6. console.log("2: end") runs immediately
+7. Call stack becomes empty
+8. Event loop checks microtask queue
+9. promise then runs before any macrotask
+10. If fetch is resolved, its .then() callback also enters microtask queue
+11. After all microtasks finish, event loop takes one macrotask
+12. setTimeout callback runs
+13. Loop continues
+```
+## Important rule
+```text
+Microtasks always run before macrotasks
+after the current synchronous code finishes.
+```
+
+So the usual output order is:
+
+```text
+1: start
+2: end
+4: promise then
+5: setTimeout callback
+```
+
 ***
 
 ## 📚 RESOURCES
